@@ -93,10 +93,10 @@ inoremap <C-U> <C-G>u<C-U>
 set tildeop
 
 " Edit Adjacent Files
-nnoremap <leader>ew :e <C-R>=expand("%:p:h")."/"<CR>
-nnoremap <leader>es :sp <C-R>=expand("%:p:%")."/"<CR>
-nnoremap <leader>ev :vsp <C-R>=expand("%:p:h")."/"<CR>
-nnoremap <leader>et :tabe <C-R>=expand("%:p:h")."/"<CR>
+nnoremap <leader>ew :e <C-R>=expand("%:p:h")."/"<CR><C-D>
+nnoremap <leader>es :sp <C-R>=expand("%:p:%")."/"<CR><C-D>
+nnoremap <leader>ev :vsp <C-R>=expand("%:p:h")."/"<CR><C-D>
+nnoremap <leader>et :tabe <C-R>=expand("%:p:h")."/"<CR><C-D>
 
 " }}}
 
