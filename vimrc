@@ -189,6 +189,11 @@ nnoremap N Nzzzv
 " Case-insensitive search unless the search uses mixed cases
 set smartcase
 set ignorecase
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+endif
+
 "}}}
 
 if !has('nvim') && &ttimeoutlen == -1
