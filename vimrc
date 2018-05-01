@@ -287,11 +287,13 @@ if exists('*minpac#init')
 
   call minpac#add('w0rp/ale')
 
-  call minpac#add('SirVer/ultisnips')
-  call minpac#add('honza/vim-snippets')
-  call minpac#add('sniphpets/sniphpets')
-  call minpac#add('sniphpets/sniphpets-common')
-  call minpac#add('sniphpets/sniphpets-postfix-codes')
+  if has('python3')
+    call minpac#add('SirVer/ultisnips')
+    call minpac#add('honza/vim-snippets')
+    call minpac#add('sniphpets/sniphpets')
+    call minpac#add('sniphpets/sniphpets-common')
+    call minpac#add('sniphpets/sniphpets-postfix-codes')
+  endif
 
   " TODO: It would be nice to conditionally load these via filetype plugins
   call minpac#add('StanAngeloff/php.vim')
