@@ -45,7 +45,7 @@ set shiftwidth=2
 " softabstop = shiftwidth
 " we use let &option = expression here because we use an expression to the get
 " the value of shiftwidth
-let &softtabstop = &shiftwidth 
+let &softtabstop = &shiftwidth
 
 set smarttab " insert spaces, according to shiftwidth, if <Tab> at the start of the line, rather than tabs
 set expandtab " Use spaces, not tabs, but the same size as we expect tabs to appear
@@ -56,7 +56,7 @@ set expandtab " Use spaces, not tabs, but the same size as we expect tabs to app
 command! -nargs=1 Spaces
       \ execute "setlocal shiftwidth=" . <args> . " softtabstop=" . <args> . " expandtab" |
       \ setlocal ts? sw? sts? et?
-command! -nargs=1 Tabs 
+command! -nargs=1 Tabs
       \ execute "setlocal shiftwidth=" . <args> . " softtabstop=" . <args> . " noexpandtab" |
       \ setlocal ts? sw? sts? et?
 
@@ -69,7 +69,7 @@ map Q gq
 nnoremap <Leader>q gqip
 
 " Hard Re-wrap and leave cursor at current word after formatting
-nnoremap <Leader>qw gwip 
+nnoremap <Leader>qw gwip
 
 " Remove the redundant comment leader when joining two comment lines
 if v:version > 703 || v:version == 703 && has('patch541')
@@ -266,6 +266,8 @@ vnoremap @ :norm@
 "
 " Maybe just manage plugins with shellscripts.
 
+silent! packadd minpac
+
 if exists('*minpac#init')
   " minpac is loaded.
   call minpac#init()
@@ -316,6 +318,16 @@ if exists('*minpac#init')
   call minpac#add('junegunn/limelight.vim')
   call minpac#add('junegunn/vim-emoji')
 
+  " We should make these 'opt'-ional and put the server registration to
+  " filetype plugins
+  call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('prabirshrestha/async.vim')
+  call minpac#add('prabirshrestha/vim-lsp')
+
+  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  call minpac#add('prabirshrestha/asyncomplete-emoji.vim')
+  call minpac#add('prabirshrestha/asyncomplete-ultisnips.vim')
+
   " Colorschemes
   call minpac#add('AlessandroYorba/Alduin')
   call minpac#add('AlessandroYorba/Despacio')
@@ -333,16 +345,73 @@ if exists('*minpac#init')
   call minpac#add('rakr/vim-two-firewatch')
   call minpac#add('romainl/Disciple')
   call minpac#add('sjl/badwolf')
-endif
 
-" Plugin Settings {{{
-" }}}
+endif
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
 " information of plugins, then performs the task.
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+" }}}
+
+" Plugin Settings {{{
+
+" Language Servers {{{
+" See https://github.com/prabirshrestha/vim-lsp/wiki/Servers
+" for server configuration
+augroup UserLanguageServer
+  autocmd!
+  autocmd User lsp_setup call lsp#register_server({
+      \ 'name': 'php-language-server',
+      \ 'cmd': {server_info->['php', expand('~/.composer/vendor/bin/php-language-server.php')]},
+      \ 'whitelist': ['php'],
+      \ })
+augroup END
+"}}}
+
+" NOTE - How These Autocommands Work
+" `User` is an autocommand event that is fired for `:doautocmd {Group} {Event}`
+" So, the asyncomplete and vim-lsp plugins have defined their own events for
+" their setup -- asyncomplete_setup, lsp_setup --  that you can hook into to
+" register servers and completions!
+
+" Autocomplete {{{
+" For autocomplete, have a look at
+" https://github.com/prabirshrestha/asyncomplete.vim
+
+" Emoji completion because reasons
+augroup UserAsyncomplete
+  autocmd!
+  " TODO it is probably better to have this register from a Markdown filetype
+  " plugin
+  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
+      \ 'name': 'emoji',
+      \ 'whitelist': ['*'],
+      \ 'completor': function('asyncomplete#sources#emoji#completor'),
+      \ }))
+augroup END
+
+if has('python3')
+  autocmd UserAsyncomplete User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+        \ 'name': 'ultisnips',
+        \ 'whitelist': ['*'],
+        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+        \ }))
+endif
+
+" Ultisnips snippets trigger uses Ctrl+e, not Tab; prevents class with
+" asyncomplete
+let g:UltiSnipsExpandTrigger="<c-e>"
+
+" asyncomplete triggers the completion pop up menu automagically in insert
+" mode. these mappings let us use tab and shift+tab to navigate the pop up
+" menu (pum)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" }}}
+
 " }}}
 
 " Project/External vimrc {{{

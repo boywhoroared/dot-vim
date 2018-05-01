@@ -59,6 +59,7 @@ repeating patterns/idioms.
 
 * `<C-L>` &#8202;—&#8202; clear highlighted searches; mapped as an analog to
   `<C-L>` to clear in the shell?
+* `<C-E>` triggers snippet expansion for Ultisnips
 * `g!` &#8202;—&#8202; run/filter the current line or visual selection through
   the shell. Effectively, we can execute commands/scripts from the buffer. See
   `:help filter`. You can use `!` and `!!` normal mode to supply the target
@@ -101,3 +102,22 @@ Use `~` and `g~` with motions to change the case of text targeted by motion
   such as dealing with NL's non PSR code in PHP etc.
 * Create command to run buffer or selection through a language specific
   interpreter. Results should go to a scratch buffer `:help filter` `:help buftype`
+
+## Language Servers
+
+### PHP Language Server
+
+Installing the PHP Language Server globally&hellip;
+
+```shell
+composer global require "felixfbecker/language-server"
+composer global require "jetbrains/phpstorm-stubs:dev-master@dev"
+composer run-script --working-dir=$HOME/.composervendor/felixfbecker/language-server parse-stubs
+```
+
+Run
+
+```
+php $HOME/.composer/vendor/bin/php-language-server.php
+# composer global exec php-language-server.php did not work
+```
