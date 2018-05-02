@@ -23,6 +23,10 @@ if has("listcmds")
   set hidden
 endif
 
+" If the Vim buffer for a file doesn't have any changes and Vim detects the
+" file has been altered, quietly update it
+set autoread
+
 " set <Leader> to the Spacebar.
 " (`mapleader` isn't special, its more like a convention)
 " :help mapleader
@@ -217,10 +221,6 @@ if has('mouse')
   set mouse=a
 endif
 
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  packadd! matchit
-  " See :help matchit and :help matchit-newlang
-endif
 
 " Maps {{{
 
@@ -258,6 +258,11 @@ vnoremap @ :norm@
 "}}}
 
 " Packages/Plugins {{{
+
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  packadd! matchit
+  " See :help matchit and :help matchit-newlang
+endif
 
 " Not sure that I like minpac -- I want to use different 'packages' to group
 " plugins.
