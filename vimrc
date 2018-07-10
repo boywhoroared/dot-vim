@@ -324,6 +324,8 @@ if exists('*minpac#init')
   call minpac#add('junegunn/limelight.vim')
   call minpac#add('junegunn/vim-emoji')
 
+  call minpac#add('ludovicchabant/vim-gutentags')
+
   " We should make these 'opt'-ional and put the server registration to
   " filetype plugins
   call minpac#add('prabirshrestha/asyncomplete.vim')
