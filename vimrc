@@ -293,6 +293,7 @@ if exists('*minpac#init')
   call minpac#add('tommcdo/vim-lion')
 
   call minpac#add('w0rp/ale')
+  call minpac#add('mattn/emmet-vim')
 
   if has('python3')
     call minpac#add('SirVer/ultisnips')
