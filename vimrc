@@ -351,9 +351,18 @@ if exists('*minpac#init')
   call minpac#add('nanotech/jellybeans.vim')
   call minpac#add('owickstrom/vim-colors-paramount')
   call minpac#add('rakr/vim-two-firewatch')
+  call minpac#add('romainl/Apprentice')
   call minpac#add('romainl/Disciple')
   call minpac#add('sjl/badwolf')
-
+  call minpac#add('andreypopp/vim-colors-plain')
+  call minpac#add('marcopaganini/termschool-vim-theme')
+  call minpac#add('whatyouhide/vim-gotham')
+  call minpac#add('rhysd/vim-color-spring-night')
+  call minpac#add('challenger-deep-theme/vim')
+  call minpac#add('cocopon/iceberg.vim')
+  call minpac#add('nightsense/shoji')
+  call minpac#add('alexanderjeurissen/lumiere.vim')
+  call minpac#add('nightsense/snow')
 endif
 
 " Define user commands for updating/cleaning the plugins.
