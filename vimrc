@@ -295,6 +295,8 @@ if exists('*minpac#init')
   call minpac#add('w0rp/ale')
   call minpac#add('mattn/emmet-vim')
 
+  call minpac#add('liuchengxu/vim-which-key')
+
   if has('python3')
     call minpac#add('SirVer/ultisnips')
     call minpac#add('honza/vim-snippets')
@@ -428,8 +430,13 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 " }}}
+"
 
 " }}}
+
+" WhichKey shows my mappings in a popup if I don't follow my leader with
+" another key (i.e. complete a mapping sequence)
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " Project/External vimrc {{{
 "
