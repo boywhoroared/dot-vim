@@ -313,6 +313,7 @@ if exists('*minpac#init')
   " https://github.com/othree/javascript-libraries-syntax.vim
   call minpac#add('othree/javascript-libraries-syntax.vim')
   call minpac#add('othree/jsdoc-syntax.vim')
+  call minpac#add('leafgarland/typescript-vim')
 
   call minpac#add('hdima/python-syntax')
   call minpac#add('tweekmonster/braceless.vim')
@@ -379,13 +380,26 @@ command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 " Language Servers {{{
 " See https://github.com/prabirshrestha/vim-lsp/wiki/Servers
 " for server configuration
-augroup UserLanguageServer
-  autocmd!
-  autocmd User lsp_setup call lsp#register_server({
+function! s:register_language_servers()
+  call lsp#register_server({
       \ 'name': 'php-language-server',
       \ 'cmd': {server_info->['php', expand('~/.composer/vendor/bin/php-language-server.php')]},
       \ 'whitelist': ['php'],
       \ })
+
+  if executable('typescript-language-server')
+    call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+        \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
+        \ })
+  endif
+endfunction
+
+augroup UserLanguageServer
+  autocmd!
+  autocmd User lsp_setup call s:register_language_servers()
 augroup END
 "}}}
 
