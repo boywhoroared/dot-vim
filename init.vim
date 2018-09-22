@@ -3,9 +3,6 @@
 " set packpath+=~/.vim
 source ~/.vim/vimrc
 
-" terminals use truecolour
-set termguicolors
-
 " enable <Esc> for terminal buffers
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>

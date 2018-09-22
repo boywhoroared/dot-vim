@@ -1,3 +1,8 @@
+set nocompatible
+
+" I see your true colours -- use GUI 24 bit colour
+set termguicolors
+
 " Make it easier to read files by enabling syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
@@ -340,6 +345,7 @@ if exists('*minpac#init')
   call minpac#add('prabirshrestha/asyncomplete-ultisnips.vim')
 
   " Colorschemes
+  call minpac#add('lifepillar/vim-solarized8')
   call minpac#add('AlessandroYorba/Alduin')
   call minpac#add('AlessandroYorba/Despacio')
   call minpac#add('AlessandroYorba/Sierra')
@@ -347,7 +353,7 @@ if exists('*minpac#init')
   call minpac#add('atelierbram/Base2Tone-vim')
   call minpac#add('fcpg/vim-fahrenheit')
   call minpac#add('fcpg/vim-orbital')
-  call minpac#add('fenetikm/falcon')
+  "  call minpac#add('fenetikm/falcon')
   call minpac#add('jnurmine/Zenburn')
   call minpac#add('junegunn/seoul256.vim')
   call minpac#add('mhinz/vim-janah')
@@ -363,7 +369,7 @@ if exists('*minpac#init')
   call minpac#add('rhysd/vim-color-spring-night')
   call minpac#add('challenger-deep-theme/vim')
   call minpac#add('cocopon/iceberg.vim')
-  call minpac#add('nightsense/shoji')
+  " call minpac#add('nightsense/shoji')
   call minpac#add('alexanderjeurissen/lumiere.vim')
   call minpac#add('nightsense/snow')
 endif
@@ -382,18 +388,18 @@ command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 " for server configuration
 function! s:register_language_servers()
   call lsp#register_server({
-      \ 'name': 'php-language-server',
-      \ 'cmd': {server_info->['php', expand('~/.composer/vendor/bin/php-language-server.php')]},
-      \ 'whitelist': ['php'],
-      \ })
+        \ 'name': 'php-language-server',
+        \ 'cmd': {server_info->['php', expand('~/.composer/vendor/bin/php-language-server.php')]},
+        \ 'whitelist': ['php'],
+        \ })
 
   if executable('typescript-language-server')
     call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-        \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
-        \ })
+          \ 'name': 'typescript-language-server',
+          \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+          \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+          \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
+          \ })
   endif
 endfunction
 
@@ -419,10 +425,10 @@ augroup UserAsyncomplete
   " TODO it is probably better to have this register from a Markdown filetype
   " plugin
   autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
-      \ 'name': 'emoji',
-      \ 'whitelist': ['*'],
-      \ 'completor': function('asyncomplete#sources#emoji#completor'),
-      \ }))
+        \ 'name': 'emoji',
+        \ 'whitelist': ['*'],
+        \ 'completor': function('asyncomplete#sources#emoji#completor'),
+        \ }))
 augroup END
 
 if has('python3')
@@ -444,7 +450,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 " }}}
-"
+
 
 " }}}
 
