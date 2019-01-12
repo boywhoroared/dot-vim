@@ -1,7 +1,11 @@
 set nocompatible
 
 " I see your true colours -- use GUI 24 bit colour
-set termguicolors
+if has('termguicolos')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " Make it easier to read files by enabling syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
