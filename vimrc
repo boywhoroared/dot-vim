@@ -286,94 +286,117 @@ if exists('*minpac#init')
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
+  " call minpac#add('tpope/vim-vinegar')
+  call minpac#add('justinmk/vim-dirvish')
+
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-abolish')
   call minpac#add('tpope/vim-unimpaired')
   call minpac#add('tpope/vim-commentary')
+  call minpac#add('tpope/vim-sleuth')
   " vim-sandwich replaces 'tpope/vim-surround
   call minpac#add('machakann/vim-sandwich')
+
+  " if !has('nvim')
+  "   call minpac#add('markonm/traces.vim', {'type': 'opt'})
+  " endif
+
+  call minpac#add('tpope/vim-ragtag')
+  call minpac#add('tpope/vim-dadbod')
 
   call minpac#add('tpope/vim-eunuch')
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('tpope/vim-git')
+  call minpac#add('rhysd/conflict-marker.vim')
   call minpac#add('tommcdo/vim-lion')
 
+  call minpac#add('janko/vim-test')
   call minpac#add('w0rp/ale')
-  call minpac#add('mattn/emmet-vim')
 
   call minpac#add('liuchengxu/vim-which-key')
 
-  if has('python3')
-    call minpac#add('SirVer/ultisnips')
-    call minpac#add('honza/vim-snippets')
-    call minpac#add('sniphpets/sniphpets')
-    call minpac#add('sniphpets/sniphpets-common')
-    call minpac#add('sniphpets/sniphpets-postfix-codes')
-  endif
+  " Snippets / Autocomplete
+  call minpac#add('mattn/emmet-vim')
+  call minpac#add('SirVer/ultisnips')
+  call minpac#add('honza/vim-snippets')
+  call minpac#add('epilande/vim-react-snippets')
+  call minpac#add('epilande/vim-es2015-snippets')
 
   " TODO: It would be nice to conditionally load these via filetype plugins
   call minpac#add('StanAngeloff/php.vim')
 
+  " JavaScript/TypeScript
   call minpac#add('othree/yajs.vim')
   " You WANT to read more about how this works:
   " https://github.com/othree/javascript-libraries-syntax.vim
   call minpac#add('othree/javascript-libraries-syntax.vim')
+  call minpac#add('othree/es.next.syntax.vim')
   call minpac#add('othree/jsdoc-syntax.vim')
   call minpac#add('leafgarland/typescript-vim')
 
+  call minpac#add('othree/html5.vim')
+
+  " Python
   call minpac#add('hdima/python-syntax')
   call minpac#add('tweekmonster/braceless.vim')
 
+  " CI/CD, syadmin/ops
   call minpac#add('martinda/Jenkinsfile-vim-syntax')
-  call minpac#add('hashivim/vim-terraform')
+  call minpac#add('chr4/nginx.vim')
 
   " Writing
   call minpac#add('tpope/vim-markdown')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
   call minpac#add('junegunn/vim-emoji')
+  call minpac#add('dkarter/bullets.vim')
 
-  call minpac#add('ludovicchabant/vim-gutentags')
-
-  " We should make these 'opt'-ional and put the server registration to
-  " filetype plugins
-  call minpac#add('prabirshrestha/asyncomplete.vim')
-  call minpac#add('prabirshrestha/async.vim')
-  call minpac#add('prabirshrestha/vim-lsp')
-
-  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
-  call minpac#add('prabirshrestha/asyncomplete-emoji.vim')
-  call minpac#add('prabirshrestha/asyncomplete-ultisnips.vim')
+  " Wiki, Notes and ToDos
+  call minpac#add('vimwiki/vimwiki')
+  call minpac#add('mattn/calendar-vim')
+  call minpac#add('dbeniamine/todo.txt-vim')
+  call minpac#add('vim-voom/VOoM')
+  call minpac#add('joanrivera/vim-zimwiki-syntax')
 
   " Colorschemes
   call minpac#add('lifepillar/vim-solarized8')
   call minpac#add('AlessandroYorba/Alduin')
   call minpac#add('AlessandroYorba/Despacio')
   call minpac#add('AlessandroYorba/Sierra')
+  call minpac#add('AlessandroYorba/Breve')
   call minpac#add('archSeer/colibri.vim')
-  call minpac#add('atelierbram/Base2Tone-vim')
   call minpac#add('fcpg/vim-fahrenheit')
   call minpac#add('fcpg/vim-orbital')
-  "  call minpac#add('fenetikm/falcon')
+  call minpac#add('fenetikm/falcon')
   call minpac#add('jnurmine/Zenburn')
-  call minpac#add('junegunn/seoul256.vim')
-  call minpac#add('mhinz/vim-janah')
   call minpac#add('nanotech/jellybeans.vim')
   call minpac#add('owickstrom/vim-colors-paramount')
   call minpac#add('rakr/vim-two-firewatch')
   call minpac#add('romainl/Apprentice')
   call minpac#add('romainl/Disciple')
   call minpac#add('sjl/badwolf')
-  call minpac#add('andreypopp/vim-colors-plain')
-  call minpac#add('marcopaganini/termschool-vim-theme')
   call minpac#add('whatyouhide/vim-gotham')
-  call minpac#add('rhysd/vim-color-spring-night')
-  call minpac#add('challenger-deep-theme/vim')
-  call minpac#add('cocopon/iceberg.vim')
-  " call minpac#add('nightsense/shoji')
-  call minpac#add('alexanderjeurissen/lumiere.vim')
   call minpac#add('nightsense/snow')
+  call minpac#add('liuchengxu/space-vim-theme')
+  call minpac#add('NLKNguyen/papercolor-theme')
+  call minpac#add('chmllr/elrodeo-vim-colorscheme')
+  call minpac#add('cormacrelf/vim-colors-github')
+  call minpac#add('romainl/vim-dichromatic')
+  call minpac#add('tpope/vim-vividchalk')
+  call minpac#add('arzg/vim-oldbook8')
+  call minpac#add('lifepillar/seoul256.vim')
+  call minpac#add('lifepillar/vim-gruvbox8')
+  call minpac#add('srcery-colors/srcery-vim')
+  call minpac#add('stillwwater/vim-nebula')
+  call minpac#add('jdsimcoe/panic.vim')
+  call minpac#add('jaredgorski/SpaceCamp')
+  call minpac#add('wadackel/vim-dogrun')
+  call minpac#add('sonjapeterson/1989.vim')
+  call minpac#add('haishanh/night-owl.vim')
+  call minpac#add('raphamorim/lucario')
+  call minpac#add('kamwitsta/flatwhite-vim')
+
 endif
 
 " Define user commands for updating/cleaning the plugins.
@@ -459,6 +482,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 " WhichKey shows my mappings in a popup if I don't follow my leader with
 " another key (i.e. complete a mapping sequence)
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+colorscheme slate
 
 " Project/External vimrc {{{
 "
