@@ -123,7 +123,6 @@ if exists('+relativenumber')
   " show relative numbers for offset lines, while showing the absolute number
   " for the current line
   " help :number_relativenumber
-  set relativenumber
 
   " Cycle through relativenumber + number, number (only), and no numbers
   nnoremap <leader>n :<c-r>={
