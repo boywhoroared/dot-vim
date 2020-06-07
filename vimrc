@@ -43,12 +43,6 @@ let mapleader = "\<Space>"
 
 " {{{ Editing
 
-" Allow backspacing over everything in insert mode.
-" In the old days, vi tried to help save you from yourself by limiting what
-" you could delete while typing (in Insert mode) -- you would make these
-" edits in Normal mode.
-set backspace=indent,eol,start
-
 " Infer indent level from the previous line
 set autoindent " :help autoindent says this is local to buffer, so does setting it here help?
 
