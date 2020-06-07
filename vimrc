@@ -111,6 +111,11 @@ nnoremap <leader>es :sp <C-R>=expand("%:p:%")."/"<CR><C-D>
 nnoremap <leader>ev :vsp <C-R>=expand("%:p:h")."/"<CR><C-D>
 nnoremap <leader>et :tabe <C-R>=expand("%:p:h")."/"<CR><C-D>
 
+" Move visual lines on wrapped lines, unless a count is given.
+" If a count is given, operate on actual lines (normal behaviour).
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+
 " }}}
 
 " Show a few lines of context around the cursor.  Note that this makes the
