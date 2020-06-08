@@ -359,6 +359,14 @@ if exists('*minpac#init')
   call minpac#add('vim-voom/VOoM')
   call minpac#add('joanrivera/vim-zimwiki-syntax')
 
+  " We should make these 'opt'-ional and put the server registration to
+  " filetype plugins
+  call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('prabirshrestha/async.vim')
+  call minpac#add('prabirshrestha/vim-lsp')
+  call minpac#add('prabirshrestha/asyncomplete-emoji.vim')
+  call minpac#add('prabirshrestha/asyncomplete-ultisnips.vim')
+
   " Colorschemes
   call minpac#add('lifepillar/vim-solarized8')
   call minpac#add('AlessandroYorba/Alduin')
